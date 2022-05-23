@@ -10,6 +10,7 @@ public class Component {
     private String description;
     private String generation;
     private LocalDate releaseDate;
+    private int id;
 
     /**
      * gets name
@@ -73,5 +74,21 @@ public class Component {
      */
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    /**
+     * gets id
+     * @return value of id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * sets id
+     * @param id value to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

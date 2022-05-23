@@ -8,6 +8,7 @@ public class Manufacturer {
     private String origin;
     private String tel;
     private String email;
+    private int id;
 
     /**
      * gets name
@@ -71,5 +72,21 @@ public class Manufacturer {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * gets id
+     * @return value of id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * sets id
+     * @param id value to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

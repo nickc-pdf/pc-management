@@ -9,6 +9,7 @@ public class PC {
     private String name;
     private List<Component> components;
     private Manufacturer manufacturer;
+    private int id;
 
     /**
      * gets name
@@ -56,5 +57,21 @@ public class PC {
      */
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    /**
+     * gets id
+     * @return value of id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * sets id
+     * @param id value to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }
