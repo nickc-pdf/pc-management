@@ -28,6 +28,11 @@ public class ComponentService {
                 .build();
     }
 
+    /**
+     * reads a specific Component of all Components
+     * @param componentID
+     * @return Component as JSON
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

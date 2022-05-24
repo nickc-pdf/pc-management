@@ -28,6 +28,11 @@ public class PcService {
                 .build();
     }
 
+    /**
+     * reads a specific PC of all PCs
+     * @param pcID
+     * @return PC as JSON
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

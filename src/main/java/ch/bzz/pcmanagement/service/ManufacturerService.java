@@ -28,6 +28,11 @@ public class ManufacturerService {
                 .build();
     }
 
+    /**
+     * reads a specific Manufacturer of all Manufacturers
+     * @param manufacturerID
+     * @return Manufacturer as JSON
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
