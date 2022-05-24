@@ -1,7 +1,7 @@
 package ch.bzz.pcmanagement.service;
 
 import ch.bzz.pcmanagement.data.DataHandler;
-import ch.bzz.pcmanagement.model.PC;
+import ch.bzz.pcmanagement.model.Manufacturer;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,38 +12,38 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * reads a list of all PCs
- * @return Pcs as JSON
+ * reads a list of all Manufacturers
+ * @return Manufacturers as JSON
  */
-@Path("pc")
-public class PcService {
+@Path("manufacturer")
+public class ManufacturerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPcs() {
-        List<PC> pcList = DataHandler.getInstance().readAllPc();
+    public Response listManufacturers() {
+        List<Manufacturer> manufacturerList = DataHandler.getInstance().readAllManufacturer();
         return Response
                 .status(200)
-                .entity(pcList)
+                .entity(manufacturerList)
                 .build();
     }
 
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPc(
-            @QueryParam("id") int pcID
+    public Response readManufacturer(
+            @QueryParam("id") int manufacturerID
     ) {
         int httpStatus;
-        PC pc = DataHandler.getInstance().readPCID(pcID);
-        if (pc == null){
+        Manufacturer manufacturer = DataHandler.getInstance().readManufacturerID(manufacturerID);
+        if (manufacturer == null){
             httpStatus= 404;
         } else {
             httpStatus = 200;
         }
         return Response
                 .status(httpStatus)
-                .entity(pc)
+                .entity(manufacturer)
                 .build();
     }
 }

@@ -1,6 +1,7 @@
 package ch.bzz.pcmanagement.model;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * the component of one or PCs
@@ -9,7 +10,7 @@ public class Component {
     private String name;
     private String description;
     private String generation;
-    private LocalDate releaseDate;
+    private Date releaseDate;
     private int id;
 
     /**
@@ -64,7 +65,7 @@ public class Component {
      * gets releaseDate
      * @return value of releaseDate
      */
-    public LocalDate getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
@@ -72,7 +73,7 @@ public class Component {
      * sets releaseDate
      * @param releaseDate value to set
      */
-    public void setReleaseDate(LocalDate releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 

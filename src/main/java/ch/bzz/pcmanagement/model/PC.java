@@ -1,5 +1,7 @@
 package ch.bzz.pcmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 /**
@@ -7,9 +9,12 @@ import java.util.List;
  */
 public class PC {
     private String name;
+    @JsonIgnore
     private List<Component> components;
+    @JsonIgnore
     private Manufacturer manufacturer;
     private int id;
+    private double price;
 
     /**
      * gets name
@@ -73,5 +78,21 @@ public class PC {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * gest price
+     * @return value of price
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * sets price
+     * @param price value to set
+     */
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
