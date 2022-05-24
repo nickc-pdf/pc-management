@@ -1,0 +1,355 @@
+{
+	"id": "124b1c76-9dfa-4107-bfd6-bb31b6012717",
+	"name": "PCManagement",
+	"timestamp": "2022-05-24T12:47:37.091Z",
+	"collection_id": "7be6676c-0255-44e9-96dc-84160d8a950b",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 15,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "fb41a7ad-675f-4a5e-9d83-b398185fdfdf",
+			"name": "0.1 Testservice",
+			"url": "http://localhost:8080/pc-management-1.0/resource/test/test",
+			"time": 862,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				862
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2d4b6d53-042e-4376-83f9-25a15a7cfdb6",
+			"name": "1.0 List all Pcs",
+			"url": "http://localhost:8080/pc-management-1.0/resource/pc/list",
+			"time": 891,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				891
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "a3583a78-9733-4064-bbfd-e5071252e9b2",
+			"name": "1.1 read PC",
+			"url": "http://localhost:8080/pc-management-1.0/resource/pc/read?id=1",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "f4985aee-7612-4bf7-ad21-22db935b2fc7",
+			"name": "1.2 read PC not found",
+			"url": "http://localhost:8080/pc-management-1.0/resource/pc/read?id=20",
+			"time": 19,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "99ce2dc5-a316-487b-99e0-eafcb985ce82",
+			"name": "1.3 List all Manufacturers",
+			"url": "http://localhost:8080/pc-management-1.0/resource/manufacturer/list",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "5bd856d9-9cc8-4681-a4e5-b875b1d6b55c",
+			"name": "1.4 read Manufacturer",
+			"url": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=1",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "e6d56ad4-8dfe-4127-9277-940841d1b76d",
+			"name": "1.5 read manufacturer not found",
+			"url": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=5",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "40757a9a-3278-4b95-9e68-378ab7649e96",
+			"name": "1.6 List all Components",
+			"url": "http://localhost:8080/pc-management-1.0/resource/component/list",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "9f8f49ee-fe0e-43a0-9eae-b21bfd9b6922",
+			"name": "1.7 read component",
+			"url": "http://localhost:8080/pc-management-1.0/resource/component/read?id=1",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate reponse": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate reponse": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate reponse": true
+				}
+			]
+		},
+		{
+			"id": "31a5761a-765f-4c89-a75d-d7c84c25b0a8",
+			"name": "1.8 read component not found",
+			"url": "http://localhost:8080/pc-management-1.0/resource/pc/read?id=5",
+			"time": 31,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1911,
+	"collection": {
+		"requests": [
+			{
+				"id": "fb41a7ad-675f-4a5e-9d83-b398185fdfdf",
+				"method": "GET"
+			},
+			{
+				"id": "2d4b6d53-042e-4376-83f9-25a15a7cfdb6",
+				"method": "GET"
+			},
+			{
+				"id": "a3583a78-9733-4064-bbfd-e5071252e9b2",
+				"method": "GET"
+			},
+			{
+				"id": "f4985aee-7612-4bf7-ad21-22db935b2fc7",
+				"method": "GET"
+			},
+			{
+				"id": "99ce2dc5-a316-487b-99e0-eafcb985ce82",
+				"method": "GET"
+			},
+			{
+				"id": "5bd856d9-9cc8-4681-a4e5-b875b1d6b55c",
+				"method": "GET"
+			},
+			{
+				"id": "e6d56ad4-8dfe-4127-9277-940841d1b76d",
+				"method": "GET"
+			},
+			{
+				"id": "40757a9a-3278-4b95-9e68-378ab7649e96",
+				"method": "GET"
+			},
+			{
+				"id": "9f8f49ee-fe0e-43a0-9eae-b21bfd9b6922",
+				"method": "GET"
+			},
+			{
+				"id": "31a5761a-765f-4c89-a75d-d7c84c25b0a8",
+				"method": "GET"
+			}
+		]
+	}
+}

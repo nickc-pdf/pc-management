@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Ultragaming PC",
+    "manufacturer": 1,
+    "components": [{
+      "mainboard": 4,
+      "cpu": 8,
+      "cpuk": 85,
+      "gpu": 25,
+      "gpuk": 99,
+      "psu": 56,
+      "ram": 75
+    }],
+    "price": 1250.65
+  },
+  {
+    "id": 2,
+    "name": "Multimedia 8000",
+    "manufacturer": 2,
+    "components": [{
+      "mainboard": 2,
+      "cpu": 9,
+      "cpuk": 87,
+      "gpu": 22,
+      "gpuk": 100,
+      "psu": 54,
+      "ram": 77
+    }],
+    "price": 2836.70
+  },
+  {
+    "id": 3,
+    "name": "Deskjet 3000",
+    "manufacturer": 5,
+    "components": [{
+      "mainboard": 1,
+      "cpu": 8,
+      "cpuk": 82,
+      "gpu": 27,
+      "gpuk": 99,
+      "psu": 59,
+      "ram": 79
+    }],
+    "price": 1780.55
+  }
+]

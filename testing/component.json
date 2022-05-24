@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Intel Pentium II",
+    "description": "A fast CPU with 233-450MHz clock rate",
+    "generation": "Pentium",
+    "releaseDate": "1970-05-07"
+  },
+  {
+    "id": 2,
+    "name": "rtx 3090",
+    "description": "A fast GPU with 233-450MHz clock rate",
+    "generation": "GeForce 30 Series",
+    "releaseDate": "2020-09-17"
+  },
+  {
+    "id": 3,
+    "name": "ROG MAXIMUS XI HERO (WI-FI)",
+    "description": "Intel Z390 ATX Gaming motherboard with M.2 heatsink, Aura Sync RGB LED, DDR4 4400MHz, 802.11ac Wi-Fi, dual M.2, SATA 6Gb/s, and USB 3.1 Gen 2",
+    "generation": "Gen XI",
+    "releaseDate": "1970-05-07"
+  }
+]
