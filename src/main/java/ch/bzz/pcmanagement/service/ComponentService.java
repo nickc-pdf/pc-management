@@ -21,7 +21,7 @@ public class ComponentService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listComponents() {
-        List<Component> componentList = DataHandler.getInstance().readAllComponents();
+        List<Component> componentList = DataHandler.readAllComponents();
         return Response
                 .status(200)
                 .entity(componentList)
@@ -40,7 +40,7 @@ public class ComponentService {
             @QueryParam("id") int componentID
     ) {
         int httpStatus;
-        Component component = DataHandler.getInstance().readComponentID(componentID);
+        Component component = DataHandler.readComponentID(componentID);
         if (component == null){
             httpStatus= 404;
         } else {

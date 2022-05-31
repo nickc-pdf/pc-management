@@ -21,7 +21,7 @@ public class PcService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listPcs() {
-        List<PC> pcList = DataHandler.getInstance().readAllPc();
+        List<PC> pcList = DataHandler.readAllPc();
         return Response
                 .status(200)
                 .entity(pcList)
@@ -40,7 +40,7 @@ public class PcService {
             @QueryParam("id") int pcID
     ) {
         int httpStatus;
-        PC pc = DataHandler.getInstance().readPCID(pcID);
+        PC pc = DataHandler.readPCID(pcID);
         if (pc == null){
             httpStatus= 404;
         } else {

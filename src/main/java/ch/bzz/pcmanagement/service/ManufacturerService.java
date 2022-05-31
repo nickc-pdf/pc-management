@@ -21,7 +21,7 @@ public class ManufacturerService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listManufacturers() {
-        List<Manufacturer> manufacturerList = DataHandler.getInstance().readAllManufacturer();
+        List<Manufacturer> manufacturerList = DataHandler.readAllManufacturer();
         return Response
                 .status(200)
                 .entity(manufacturerList)
@@ -40,7 +40,7 @@ public class ManufacturerService {
             @QueryParam("id") int manufacturerID
     ) {
         int httpStatus;
-        Manufacturer manufacturer = DataHandler.getInstance().readManufacturerID(manufacturerID);
+        Manufacturer manufacturer = DataHandler.readManufacturerID(manufacturerID);
         if (manufacturer == null){
             httpStatus= 404;
         } else {

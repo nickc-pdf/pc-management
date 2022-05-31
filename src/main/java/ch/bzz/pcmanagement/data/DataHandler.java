@@ -5,9 +5,12 @@ import ch.bzz.pcmanagement.model.Manufacturer;
 import ch.bzz.pcmanagement.model.PC;
 import ch.bzz.pcmanagement.service.Config;
 
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,32 +19,16 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Component> componentList;
-    private List<Manufacturer> manufacturerList;
-    private List<PC> pcList;
+public final class DataHandler {
+    private static DataHandler instance;
+    private static List<Component> componentList;
+    private static List<Manufacturer> manufacturerList;
+    private static List<PC> pcList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setPcList(new ArrayList<>());
-        readPcJSON();
-        setManufacturerList(new ArrayList<>());
-        readManufacturerJSON();
-        setComponentList(new ArrayList<>());
-        readComponentJSON();
-    }
-
-    /**
-     * gets the only instance of this class
-     * @return
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
     }
 
 
@@ -49,7 +36,7 @@ public class DataHandler {
      * reads all components
      * @return list of components
      */
-    public List<Component> readAllComponents() {
+    public static List<Component> readAllComponents() {
         return getComponentList();
     }
 
@@ -58,7 +45,7 @@ public class DataHandler {
      * @param componentID
      * @return the Component (null=not found)
      */
-    public Component readComponentID(int componentID) {
+    public static Component readComponentID(int componentID) {
         Component component = null;
         for (Component entry : getComponentList()) {
             if (entry.getId() == componentID) {
@@ -69,10 +56,43 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new component into the componentList
+     *
+     * @param component the book to be saved
+     */
+    public static void insertComponent(Component component) {
+        getComponentList().add(component);
+        writeComponentJSON();
+    }
+
+    /**
+     * updates the componentList
+     */
+    public static void updateComponent() {
+        writeComponentJSON();
+    }
+
+    /**
+     * deletes a component identified by the componentID
+     * @param componentID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteComponent(int componentID) {
+        Component component = readComponentID(componentID);
+        if (component != null) {
+            getComponentList().remove(component);
+            writeComponentJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all Manufacturers
      * @return list of Manufacturers
      */
-    public List<Manufacturer> readAllManufacturer() {
+    public static List<Manufacturer> readAllManufacturer() {
         return getManufacturerList();
     }
 
@@ -81,7 +101,7 @@ public class DataHandler {
      * @param manufacturerID
      * @return the Manufacturer (null=not found)
      */
-    public Manufacturer readManufacturerID(int manufacturerID) {
+    public static Manufacturer readManufacturerID(int manufacturerID) {
         Manufacturer manufacturer = null;
         for (Manufacturer entry : getManufacturerList()) {
             if (entry.getId() == manufacturerID) {
@@ -92,10 +112,43 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new manufacturer into the manufacturerList
+     *
+     * @param manufacturer the book to be saved
+     */
+    public static void insertManufacturer(Manufacturer manufacturer) {
+        getManufacturerList().add(manufacturer);
+        writeManufacturerJSON();
+    }
+
+    /**
+     * updates the manufacturertList
+     */
+    public static void updateManufacturer() {
+        writeManufacturerJSON();
+    }
+
+    /**
+     * deletes a manufacturer identified by the manufacturerID
+     * @param manufacturerID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteManufacturer(int manufacturerID) {
+        Manufacturer manufacturer = readManufacturerID(manufacturerID);
+        if (manufacturer != null) {
+            getManufacturerList().remove(manufacturerID);
+            writeManufacturerJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all PCs
      * @return list of PCs
      */
-    public List<PC> readAllPc() {
+    public static List<PC> readAllPc() {
         return getPCList();
     }
 
@@ -104,7 +157,7 @@ public class DataHandler {
      * @param pcID
      * @return the PC (null=not found)
      */
-    public PC readPCID(int pcID) {
+    public static PC readPCID(int pcID) {
         PC pc = null;
         for (PC entry : getPCList()) {
             if (entry.getId() == pcID) {
@@ -113,10 +166,63 @@ public class DataHandler {
         }
         return pc;
     }
+
+    /**
+     * inserts a new pc into the pcList
+     *
+     * @param pc the book to be saved
+     */
+    public static void insertPC(PC pc) {
+        getPCList().add(pc);
+        writePCJSON();
+    }
+
+    /**
+     * updates the pcList
+     */
+    public static void updatePC() {
+        writePCJSON();
+    }
+
+    /**
+     * deletes a pc identified by the pcID
+     * @param pcID  the key
+     * @return  success=true/false
+     */
+    public static boolean deletePC(int pcID) {
+        PC pc = readPCID(pcID);
+        if (pc != null) {
+            getPCList().remove(pcID);
+            writePCJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * writes the componentList to the JSON-file
+     */
+    private static void writeComponentJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String componentPath = Config.getProperty("componentJSON");
+        try {
+            fileOutputStream = new FileOutputStream(componentPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getComponentList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * reads the components from the JSON-file
      */
-    private void readComponentJSON() {
+    private static void readComponentJSON() {
         try {
             String path = Config.getProperty("componentJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -133,9 +239,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the manufacturerList to the JSON-file
+     */
+    private static void writeManufacturerJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String manufacturerPath = Config.getProperty("manufacturerJSON");
+        try {
+            fileOutputStream = new FileOutputStream(manufacturerPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getManufacturerList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the manufactures from the JSON-file
      */
-    private void readManufacturerJSON() {
+    private static void readManufacturerJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -153,9 +278,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the pcList to the JSON-file
+     */
+    private static void writePCJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String pcPath = Config.getProperty("pcJSON");
+        try {
+            fileOutputStream = new FileOutputStream(pcPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getComponentList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the components from the JSON-file
      */
-    private void readPcJSON() {
+    private static void readPcJSON() {
         try {
             String path = Config.getProperty("pcJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -176,7 +320,12 @@ public class DataHandler {
      *
      * @return value of componentList
      */
-    private List<Component> getComponentList() {
+    private static List<Component> getComponentList() {
+        if (componentList == null) {
+            setComponentList(new ArrayList<>());
+            readComponentJSON();
+        }
+
         return componentList;
     }
 
@@ -185,8 +334,8 @@ public class DataHandler {
      *
      * @param componentList the value to set
      */
-    private void setComponentList(List<Component> componentList) {
-        this.componentList = componentList;
+    private static void setComponentList(List<Component> componentList) {
+        DataHandler.componentList = componentList;
     }
 
     /**
@@ -194,7 +343,12 @@ public class DataHandler {
      *
      * @return value of manufacturerList
      */
-    private List<Manufacturer> getManufacturerList() {
+    private static List<Manufacturer> getManufacturerList() {
+        if (manufacturerList == null) {
+            setManufacturerList(new ArrayList<>());
+            readManufacturerJSON();
+        }
+
         return manufacturerList;
     }
 
@@ -203,8 +357,8 @@ public class DataHandler {
      *
      * @param manufacturerList the value to set
      */
-    private void setManufacturerList(List<Manufacturer> manufacturerList) {
-        this.manufacturerList = manufacturerList;
+    private static void setManufacturerList(List<Manufacturer> manufacturerList) {
+        DataHandler.manufacturerList = manufacturerList;
     }
 
     /**
@@ -212,7 +366,12 @@ public class DataHandler {
      *
      * @return value of pcList
      */
-    private List<PC> getPCList() {
+    private static List<PC> getPCList() {
+        if (pcList == null) {
+            setPcList(new ArrayList<>());
+            readPcJSON();
+        }
+
         return pcList;
     }
 
@@ -221,8 +380,8 @@ public class DataHandler {
      *
      * @param pcList the value to set
      */
-    private void setPcList(List<PC> pcList) {
-        this.pcList = pcList;
+    private static void setPcList(List<PC> pcList) {
+        DataHandler.pcList = pcList;
     }
 
 
