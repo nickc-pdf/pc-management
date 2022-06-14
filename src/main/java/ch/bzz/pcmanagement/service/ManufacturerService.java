@@ -1,14 +1,17 @@
 package ch.bzz.pcmanagement.service;
 
 import ch.bzz.pcmanagement.data.DataHandler;
+import ch.bzz.pcmanagement.model.Component;
 import ch.bzz.pcmanagement.model.Manufacturer;
+import ch.bzz.pcmanagement.model.PC;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -37,6 +40,7 @@ public class ManufacturerService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readManufacturer(
+            @NotNull
             @QueryParam("id") int manufacturerID
     ) {
         int httpStatus;
@@ -49,6 +53,62 @@ public class ManufacturerService {
         return Response
                 .status(httpStatus)
                 .entity(manufacturer)
+                .build();
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteManufacturer(
+            @NotNull
+            @QueryParam("id") int manufacturerID
+    ) {
+        int httpStatus = 200;
+        if(!DataHandler.deleteManufacturer(manufacturerID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertManufacturer(
+            @Valid @BeanParam Manufacturer manufacturer
+    ) {
+        manufacturer.setId(DataHandler.getManufacturerId());
+        DataHandler.insertManufacturer(manufacturer);
+        int httpStatus = 200;
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public  Response updateManufacturer(
+            @Valid @BeanParam Manufacturer manufacturer
+    ) {
+        int httpStatus = 200;
+        Manufacturer oldManufacturer = DataHandler.readManufacturerID(manufacturer.getId());
+        if(oldManufacturer != null     ){
+            oldManufacturer.setName(manufacturer.getName());
+            oldManufacturer.setOrigin(manufacturer.getOrigin());
+            oldManufacturer.setTel(manufacturer.getTel());
+            oldManufacturer.setEmail(manufacturer.getEmail());
+
+            DataHandler.updateManufacturer();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 }

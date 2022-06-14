@@ -1,23 +1,79 @@
-[
-  {
-    "id": 1,
-    "name": "Intel Pentium II",
-    "description": "A fast CPU with 233-450MHz clock rate",
-    "generation": "Pentium",
-    "releaseDate": "1970-05-07"
-  },
-  {
-    "id": 2,
-    "name": "rtx 3090",
-    "description": "A fast GPU with 233-450MHz clock rate",
-    "generation": "GeForce 30 Series",
-    "releaseDate": "2020-09-17"
-  },
-  {
-    "id": 3,
-    "name": "ROG MAXIMUS XI HERO (WI-FI)",
-    "description": "Intel Z390 ATX Gaming motherboard with M.2 heatsink, Aura Sync RGB LED, DDR4 4400MHz, 802.11ac Wi-Fi, dual M.2, SATA 6Gb/s, and USB 3.1 Gen 2",
-    "generation": "Gen XI",
-    "releaseDate": "1970-05-07"
-  }
-]
+[ {
+  "name" : "rtx 3090",
+  "description" : "A fast GPU with 233-450MHz clock rate",
+  "generation" : "GeForce 30 Series",
+  "releaseDate" : "2020-09-17",
+  "id" : 2
+}, {
+  "name" : "ROG MAXIMUS XI HERO (WI-FI)",
+  "description" : "Intel Z390 ATX Gaming motherboard with M.2 heatsink, Aura Sync RGB LED, DDR4 4400MHz, 802.11ac Wi-Fi, dual M.2, SATA 6Gb/s, and USB 3.1 Gen 2",
+  "generation" : "Gen XI",
+  "releaseDate" : "1970-05-07",
+  "id" : 3
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 0
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 4
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 5
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 6
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 7
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 8
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 9
+}, {
+  "name" : "AMD Ryzen 5 5600X ",
+  "description" : "The AMD Ryzen 5 5600X is a processor that is especially aimed at gamers and overclockers. ",
+  "generation" : "5000Series",
+  "releaseDate" : "1979-03-05",
+  "id" : 10
+}, {
+  "name" : "AMD Ryzen 5 5600X ",
+  "description" : "The AMD Ryzen 5 5600X is a processor that is especially aimed at gamers and overclockers. ",
+  "generation" : "5000Series",
+  "releaseDate" : "1979-03-05",
+  "id" : 11
+}, {
+  "name" : "AMD Ryzen 5 5600X ",
+  "description" : "The AMD Ryzen 5 5600X is a processor that is especially aimed at gamers and overclockers. ",
+  "generation" : "5000Series",
+  "releaseDate" : "1979-03-05",
+  "id" : 12
+}, {
+  "name" : "Maximus I 65J",
+  "description" : "Very fast cpu",
+  "generation" : "6",
+  "releaseDate" : "2022-05-05",
+  "id" : 13
+} ]

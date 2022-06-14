@@ -20,10 +20,12 @@ import java.util.List;
  * reads and writes the data in the JSON-files
  */
 public final class DataHandler {
-    private static DataHandler instance;
     private static List<Component> componentList;
     private static List<Manufacturer> manufacturerList;
     private static List<PC> pcList;
+    private static int manufacturerId;
+    private static int componentId;
+    private static int pcId;
 
     /**
      * private constructor defeats instantiation
@@ -382,6 +384,39 @@ public final class DataHandler {
      */
     private static void setPcList(List<PC> pcList) {
         DataHandler.pcList = pcList;
+    }
+
+    /**
+     * return an id that isn't used already
+     * @return
+     */
+    public static int getManufacturerId() {
+        while (readManufacturerID(manufacturerId) != null) {
+            manufacturerId++;
+        }
+        return manufacturerId;
+    }
+
+    /**
+     * return an id that isn't used already
+     * @return
+     */
+    public static int getComponentId() {
+        while (readComponentID(componentId) != null) {
+            componentId++;
+        }
+        return componentId;
+    }
+
+    /**
+     * return an id that isn't used already
+     * @return
+     */
+    public static int getPCId() {
+        while (readPCID(pcId) != null) {
+            pcId++;
+        }
+        return pcId;
     }
 
 

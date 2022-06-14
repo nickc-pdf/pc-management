@@ -1,23 +1,36 @@
-[
-  {
-    "id": 1,
-    "name": "Asus",
-    "origin": "Taiwan",
-    "tel": "+886 43 345 37 28",
-    "email": "info@asus.com"
-  },
-  {
-    "id": 2,
-    "name": "HP Inc.",
-    "origin": "Kalifornien",
-    "tel": "+669 37 493 23 32",
-    "email": "info@hp.com"
-  },
-  {
-    "id": 3,
-    "name": "Apple",
-    "origin": "Kalifornien",
-    "tel": "+669 99 505 99 27",
-    "email": "info@apple.com"
-  }
-]
+[ {
+  "name" : "Asus",
+  "origin" : "Taiwan",
+  "tel" : "+886 43 345 37 28",
+  "email" : "info@asus.com",
+  "manufacturer" : null,
+  "id" : 1
+}, {
+  "name" : "Asus CH",
+  "origin" : "Austria",
+  "tel" : "0041 43 892 38 29",
+  "email" : "test@test.ch",
+  "manufacturer" : null,
+  "id" : 0
+}, {
+  "name" : "Asus Company Switzerland",
+  "origin" : "Austria",
+  "tel" : "0041 43 892 38 29",
+  "email" : "test@test.ch",
+  "manufacturer" : null,
+  "id" : 2
+}, {
+  "name" : "Asus CH",
+  "origin" : "Austria",
+  "tel" : "0041 43 892 38 29",
+  "email" : "test@test.ch",
+  "manufacturer" : null,
+  "id" : 4
+}, {
+  "name" : "Asus Company Switzerland",
+  "origin" : "Austria",
+  "tel" : "0041 43 892 38 29",
+  "email" : "test@test.ch",
+  "manufacturer" : null,
+  "id" : 5
+} ]

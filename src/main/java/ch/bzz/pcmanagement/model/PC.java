@@ -1,20 +1,37 @@
 package ch.bzz.pcmanagement.model;
 
+import ch.bzz.pcmanagement.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * a PC in our pc management
  */
 public class PC {
+
+    private int id;
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min = 5, max = 30)
     private String name;
+
+    //@FormParam("components") List<Component> components,
     @JsonIgnore
     private List<Component> components;
-    @JsonIgnore
+
     private Manufacturer manufacturer;
-    private int id;
-    private double price;
+
+    @FormParam("price")
+    @NotNull
+    @DecimalMin("0.05")
+    @DecimalMax("9999.95")
+    private BigDecimal price;
+
 
     /**
      * gets name
@@ -64,6 +81,22 @@ public class PC {
         this.manufacturer = manufacturer;
     }
 
+    public int getManufacturerID() {
+        if (getManufacturer()== null) return 0;
+        return getManufacturer().getId();
+    }
+
+    public void setManufacturerID(int manufacturerID) {
+        setManufacturer(new Manufacturer());
+        Manufacturer manufacturer = DataHandler.readManufacturerID(manufacturerID);
+        getManufacturer().setId(manufacturerID);
+        getManufacturer().setName(manufacturer.getName());
+        getManufacturer().setEmail(manufacturer.getEmail());
+        getManufacturer().setTel(manufacturer.getTel());
+        getManufacturer().setOrigin(manufacturer.getOrigin());
+        getManufacturer().setManufacturer(manufacturer.getManufacturer());
+    }
+
     /**
      * gets id
      * @return value of id
@@ -84,7 +117,7 @@ public class PC {
      * gest price
      * @return value of price
      */
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -92,7 +125,8 @@ public class PC {
      * sets price
      * @param price value to set
      */
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
+
 }

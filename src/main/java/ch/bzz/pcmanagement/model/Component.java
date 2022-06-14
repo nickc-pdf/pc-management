@@ -1,5 +1,15 @@
 package ch.bzz.pcmanagement.model;
 
+import ch.bzz.pcmanagement.util.LocalDateDeserializer;
+import ch.bzz.pcmanagement.util.LocalDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.NumberDeserializers;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -7,10 +17,23 @@ import java.util.Date;
  * the component of one or PCs
  */
 public class Component {
+
+    @FormParam("name")
+    @NotEmpty
+    @Size(min = 5,max = 30)
     private String name;
+
+    @FormParam("description")
+    @Size(max = 120)
     private String description;
+
+    @FormParam("generation")
+    @Size(max = 15)
     private String generation;
-    private Date releaseDate;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate releaseDate;
     private int id;
 
     /**
@@ -65,7 +88,7 @@ public class Component {
      * gets releaseDate
      * @return value of releaseDate
      */
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
@@ -73,9 +96,19 @@ public class Component {
      * sets releaseDate
      * @param releaseDate value to set
      */
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+    /**
+     * sets releaseDate
+     * @param releaseDate value to set
+     */
+    @JsonIgnore
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = LocalDate.parse(releaseDate);
+    }
+
 
     /**
      * gets id

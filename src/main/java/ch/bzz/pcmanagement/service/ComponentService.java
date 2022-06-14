@@ -2,11 +2,12 @@ package ch.bzz.pcmanagement.service;
 
 import ch.bzz.pcmanagement.data.DataHandler;
 import ch.bzz.pcmanagement.model.Component;
+import ch.bzz.pcmanagement.util.ReleaseDate;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -37,6 +38,7 @@ public class ComponentService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readComponent(
+            @NotNull
             @QueryParam("id") int componentID
     ) {
         int httpStatus;
@@ -49,6 +51,66 @@ public class ComponentService {
         return Response
                 .status(httpStatus)
                 .entity(component)
+                .build();
+    }
+
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteComponent(
+            @NotNull
+            @QueryParam("id") int componentID
+    ) {
+        int httpStatus = 200;
+        if(!DataHandler.deleteComponent(componentID)){
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertComponent(
+            @Valid @BeanParam Component component,
+            @FormParam("releaseDate")@ReleaseDate(value = 1980) String releaseDate
+    ) {
+        component.setId(DataHandler.getComponentId());
+        component.setReleaseDate(releaseDate);
+        DataHandler.insertComponent(component);
+        int httpStatus = 200;
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public  Response updateComponent(
+           @Valid @BeanParam Component component,
+           @FormParam("releaseDate")@ReleaseDate(value = 1980) String releaseDate
+    ) {
+        int httpStatus = 200;
+        Component oldComponent = DataHandler.readComponentID(component.getId());
+        if(oldComponent != null){
+            oldComponent.setName(component.getName());
+            oldComponent.setDescription(component.getDescription());
+            oldComponent.setGeneration(component.getGeneration());
+            oldComponent.setReleaseDate(releaseDate);
+
+            DataHandler.updateComponent();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 }

@@ -1,14 +1,42 @@
 package ch.bzz.pcmanagement.model;
 
+import javax.validation.constraints.*;
+import javax.ws.rs.FormParam;
+
 /**
  * the manufacturer of one or more PCs
  */
 public class Manufacturer {
+    @FormParam("name")
+    @NotEmpty
+    @Size(min = 5, max = 30)
     private String name;
+
+    @FormParam("origin")
+    @NotEmpty
+    @Size(min = 5,max = 30)
     private String origin;
+
+    @FormParam("tel")
+    @NotEmpty
+    @Pattern(regexp = "(\\b(0041|0)|\\B\\+41)(\\s?\\(0\\))?(\\s)?[1-9]{2}(\\s)?[0-9]{3}(\\s)?[0-9]{2}(\\s)?[0-9]{2}\\b")
     private String tel;
+
+    @FormParam("email")
+    @NotEmpty
+    @Size(min = 6, max = 50)
     private String email;
+
+    private String manufacturer;
     private int id;
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
     /**
      * gets name
