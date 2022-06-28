@@ -23,14 +23,29 @@ public final class DataHandler {
     private static List<Component> componentList;
     private static List<Manufacturer> manufacturerList;
     private static List<PC> pcList;
-    private static int manufacturerId;
-    private static int componentId;
-    private static int pcId;
+    private static int manufacturerId = 0;
+    private static int componentId = 0;
+    private static int pcId = 0;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
+        setComponentList(new ArrayList<>());
+        readComponentJSON();
+        setManufacturerList(new ArrayList<>());
+        readManufacturerJSON();
+        setPcList(new ArrayList<>());
+        readPcJSON();
+    }
+
+    /**
+     * initializes the lists
+     */
+    public static void initLists() {
+        DataHandler.setPcList(null);
+        DataHandler.setManufacturerList(null);
+        DataHandler.setComponentList(null);
     }
 
 
@@ -138,7 +153,7 @@ public final class DataHandler {
     public static boolean deleteManufacturer(int manufacturerID) {
         Manufacturer manufacturer = readManufacturerID(manufacturerID);
         if (manufacturer != null) {
-            getManufacturerList().remove(manufacturerID);
+            getManufacturerList().remove(manufacturer);
             writeManufacturerJSON();
             return true;
         } else {

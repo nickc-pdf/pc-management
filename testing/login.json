@@ -1,0 +1,14 @@
+[
+    {
+        "userID": 0,
+        "username": "neverdrive",
+        "role": "user",
+        "password": "alwaysride"
+    },
+    {
+        "userID": 1,
+        "username": "alwaysdrive",
+        "role": "admin",
+        "password": "neverride"
+    }
+]

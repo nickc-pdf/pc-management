@@ -5,36 +5,38 @@
     <meta name="author" content="Nick Camenisch"/>
     <meta name="project" content="PC-Management"/>
     <meta name="description" content="pcmanagement pcs list table"/>
-    <title>Login</title>
+    <title>PC-Liste</title>
     <link rel="stylesheet" href="./css/pcmanagement.css">
     <script src="./js/util.js"></script>
-    <script src="./js/login.js"></script>
+    <script src="./js/manufacturerlist.js"></script>
 </head>
 <body>
 <nav id="nav">
     <span><a href="./pcmanagement.html">PCs</a></span>
     <span><a href="./manufacturerlist.html">Manufacturers</a></span>
     <span><a href="./componentlist.html">Components</a></span>
-    <span id="logOnOff"><a href="./index.html">Logout</a></span>
+    <span id="logOnOff"><a href="./index.html">Logout</a></a></span>
     <span id="message" style="color: red;"></span>
 </nav>
-<h3>Login</h3>
-<form id="loginForm">
-    <table>
+<h3>Manufacturerlist</h3>
+<form id="manufacturerForm">
+    <table id="manufacturers">
+        <thead id="search">
         <tr>
-            <td><label for="username">Username</label></td>
-            <td><input id="username" name="username" type="text"/>
+            <th>&nbsp;</th>
+            <th>Manufacturer</th>
         </tr>
         <tr>
-            <td><label for="password">Password</label></td>
-            <td><input id="password" name="password" type="password"/>
+            <th>&#128269;</th>
+            <th><input id="manufacturerName" type=text"/></th>
         </tr>
-        <tr>
-            <td>
-                <button id="login" type="submit">Login</button>
-            </td>
-        </tr>
+        </thead>
+        <tbody id="manufacturerlist">
+
+        </tbody>
     </table>
+    <p id="addButton">
+    </p>
 </form>
 </body>
 </html>

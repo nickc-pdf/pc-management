@@ -4,6 +4,7 @@ import ch.bzz.pcmanagement.data.DataHandler;
 import ch.bzz.pcmanagement.model.Component;
 import ch.bzz.pcmanagement.model.Manufacturer;
 import ch.bzz.pcmanagement.model.PC;
+import ch.bzz.pcmanagement.util.AESEncrypt;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -23,10 +24,19 @@ public class ManufacturerService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listManufacturers() {
-        List<Manufacturer> manufacturerList = DataHandler.readAllManufacturer();
+    public Response listManufacturers(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Manufacturer> manufacturerList = null;
+        userRole = AESEncrypt.decrypt(userRole);
+        int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        } else {
+            manufacturerList = DataHandler.readAllManufacturer();
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(manufacturerList)
                 .build();
     }
@@ -41,14 +51,19 @@ public class ManufacturerService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readManufacturer(
             @NotNull
-            @QueryParam("id") int manufacturerID
+            @QueryParam("id") int manufacturerID,
+            @CookieParam("userRole") String userRole
     ) {
-        int httpStatus;
-        Manufacturer manufacturer = DataHandler.readManufacturerID(manufacturerID);
-        if (manufacturer == null){
-            httpStatus= 404;
+        userRole = AESEncrypt.decrypt(userRole);
+        int httpStatus = 200;
+        Manufacturer manufacturer = null;
+        if(userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
         } else {
-            httpStatus = 200;
+            manufacturer = DataHandler.readManufacturerID(manufacturerID);
+            if (manufacturer == null){
+                httpStatus= 404;
+            }
         }
         return Response
                 .status(httpStatus)
@@ -56,15 +71,25 @@ public class ManufacturerService {
                 .build();
     }
 
+    /**
+     * deletes a manufacturer by its id
+     * @param manufacturerID
+     * @param userRole
+     * @return
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteManufacturer(
             @NotNull
-            @QueryParam("id") int manufacturerID
+            @QueryParam("id") int manufacturerID,
+            @CookieParam("userRole") String userRole
     ) {
+        userRole = AESEncrypt.decrypt(userRole);
         int httpStatus = 200;
-        if(!DataHandler.deleteManufacturer(manufacturerID)){
+        if(userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
+        } else if(!DataHandler.deleteManufacturer(manufacturerID)){
             httpStatus = 410;
         }
         return Response
@@ -73,39 +98,66 @@ public class ManufacturerService {
                 .build();
     }
 
+    /**
+     * creates a manufacturer with the parameters given
+     * @param manufacturer
+     * @param userRole
+     * @return
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertManufacturer(
-            @Valid @BeanParam Manufacturer manufacturer
+            @Valid @BeanParam Manufacturer manufacturer,
+            @CookieParam("userRole") String userRole
     ) {
-        manufacturer.setId(DataHandler.getManufacturerId());
-        DataHandler.insertManufacturer(manufacturer);
+        userRole = AESEncrypt.decrypt(userRole);
         int httpStatus = 200;
+        if(userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
+        } else {
+            manufacturer.setId(DataHandler.getManufacturerId());
+            DataHandler.insertManufacturer(manufacturer);
+        }
         return Response
                 .status(httpStatus)
                 .entity("")
                 .build();
     }
 
+    /**
+     * updates a manufacturer by its id with parameters given
+     * @param manufacturer
+     * @param id
+     * @param userRole
+     * @return
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public  Response updateManufacturer(
-            @Valid @BeanParam Manufacturer manufacturer
+            @Valid @BeanParam Manufacturer manufacturer,
+            @FormParam("id") int id,
+            @CookieParam("userRole") String userRole
     ) {
+        userRole = AESEncrypt.decrypt(userRole);
         int httpStatus = 200;
-        Manufacturer oldManufacturer = DataHandler.readManufacturerID(manufacturer.getId());
-        if(oldManufacturer != null     ){
-            oldManufacturer.setName(manufacturer.getName());
-            oldManufacturer.setOrigin(manufacturer.getOrigin());
-            oldManufacturer.setTel(manufacturer.getTel());
-            oldManufacturer.setEmail(manufacturer.getEmail());
-
-            DataHandler.updateManufacturer();
+        if(userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            Manufacturer oldManufacturer = DataHandler.readManufacturerID(id);
+            if(oldManufacturer != null     ){
+                oldManufacturer.setName(manufacturer.getName());
+                oldManufacturer.setOrigin(manufacturer.getOrigin());
+                oldManufacturer.setTel(manufacturer.getTel());
+                oldManufacturer.setEmail(manufacturer.getEmail());
+
+                DataHandler.updateManufacturer();
+            } else {
+                httpStatus = 410;
+            }
         }
+
         return Response
                 .status(httpStatus)
                 .entity("")

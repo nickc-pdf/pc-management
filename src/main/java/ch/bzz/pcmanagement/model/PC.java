@@ -24,6 +24,7 @@ public class PC {
     @JsonIgnore
     private List<Component> components;
 
+    @JsonIgnore
     private Manufacturer manufacturer;
 
     @FormParam("price")

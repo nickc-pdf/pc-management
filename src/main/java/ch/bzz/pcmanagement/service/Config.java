@@ -33,6 +33,7 @@ public class Config extends Application {
         providers.add(ManufacturerService.class);
         providers.add(ComponentService.class);
         providers.add(TestService.class);
+        providers.add(UserService.class);
         return providers;
     }
 

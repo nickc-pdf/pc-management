@@ -6,6 +6,68 @@
 	},
 	"item": [
 		{
+			"name": "5.0 Login admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alwaysdrive",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "neverride",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "0.1 Testservice",
 			"request": {
 				"method": "GET",
@@ -263,7 +325,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=5",
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=6969",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -278,7 +340,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "5"
+							"value": "6969"
 						}
 					]
 				}
@@ -339,8 +401,8 @@
 							"pm.test(\"validate reponse\", function (){",
 							"    pm.response.to.be.json;",
 							"    const responseJson = pm.response.json();",
-							"    pm.expect(responseJson.name).to.eql(\"Intel Pentium II\");",
-							"    pm.expect(responseJson.generation).to.eql(\"Pentium\");",
+							"    pm.expect(responseJson.name).to.eql(\"rtx 3090\");",
+							"    pm.expect(responseJson.generation).to.eql(\"GeForce 30 Series\");",
 							"})"
 						],
 						"type": "text/javascript"
@@ -351,7 +413,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/pc-management-1.0/resource/component/read?id=1",
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/read?id=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -366,7 +428,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "2"
 						}
 					]
 				}
@@ -912,7 +974,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "The Ultimate Master Gaming PC",
+							"value": "The Ultimate Master Giga Gaming PC",
 							"type": "text"
 						},
 						{
@@ -1247,7 +1309,7 @@
 					"urlencoded": [
 						{
 							"key": "name",
-							"value": "Asus Company Switzerland",
+							"value": "Asus Company Switzerland Zürich",
 							"type": "text"
 						},
 						{
@@ -1724,7 +1786,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1759,7 +1821,7 @@
 						},
 						{
 							"key": "id",
-							"value": "1000",
+							"value": "3453",
 							"type": "text"
 						}
 					]
@@ -1849,7 +1911,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1974,7 +2036,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2084,7 +2146,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2174,7 +2236,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2264,7 +2326,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(400);",
+							"    pm.response.to.have.status(410);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -2295,6 +2357,1823 @@
 						{
 							"key": "id",
 							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.0 Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alwaysdrive",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "neverride",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1 Login user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "neverdrive",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "alwaysride",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1.1 create pc but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ultimate PC",
+							"type": "text"
+						},
+						{
+							"key": "manufacturerID",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1299.80",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1.2 create correct component but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "releaseDate",
+							"value": "2022-05-05",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Very fast cpu",
+							"type": "text"
+						},
+						{
+							"key": "generation",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Maximus I 65J",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1.3 create correct manufacturer but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Asus CH",
+							"type": "text"
+						},
+						{
+							"key": "origin",
+							"value": "Austria",
+							"type": "text"
+						},
+						{
+							"key": "tel",
+							"value": "0041 43 892 38 29",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.ch",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.1 List all Pcs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.2 List all Components",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.3 List all Manufacturers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.4 read PC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"validate reponse\", function (){",
+							"    pm.response.to.be.json;",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(\"Ultimate PC\");",
+							"    pm.expect(responseJson.price).to.eql(1299.80);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/read?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.5 read Manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"validate reponse\", function (){",
+							"    pm.response.to.be.json;",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(\"Asus Company Switzerland\");",
+							"    pm.expect(responseJson.email).to.eql(\"test@test.ch\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2.6 read component",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"validate reponse\", function (){",
+							"    pm.response.to.be.json;",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson.name).to.eql(\"rtx 3090\");",
+							"    pm.expect(responseJson.generation).to.eql(\"GeForce 30 Series\");",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/read?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.3.1 update component not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "releaseDate",
+							"value": "2022-05-05",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Very fast cpu",
+							"type": "text"
+						},
+						{
+							"key": "generation",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Maximus I 65J",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.3.2 update pc not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ultimate PC",
+							"type": "text"
+						},
+						{
+							"key": "manufacturerID",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1299.80",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.3.3 update manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Asus CH",
+							"type": "text"
+						},
+						{
+							"key": "origin",
+							"value": "Austria",
+							"type": "text"
+						},
+						{
+							"key": "tel",
+							"value": "0041 43 892 38 29",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.ch",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.4.1 delete component",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.4.2 delete pc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.4.3 delete manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.4.4 Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alwaysdrive",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "neverride",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.5 Login person not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "hans",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.5.1 create pc but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ultimate PC",
+							"type": "text"
+						},
+						{
+							"key": "manufacturerID",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1299.80",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.5.2 create component but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "releaseDate",
+							"value": "2022-05-05",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Very fast cpu",
+							"type": "text"
+						},
+						{
+							"key": "generation",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Maximus I 65J",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.5.3 create manufacturer but not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Asus CH",
+							"type": "text"
+						},
+						{
+							"key": "origin",
+							"value": "Austria",
+							"type": "text"
+						},
+						{
+							"key": "tel",
+							"value": "0041 43 892 38 29",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.ch",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.1 List all Pcs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.2 List all Components",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.3 List all Manufacturers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.4 read PC",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/read?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.5 read Manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/read?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.6.6 read component",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/read?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"read"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.7.1 update component not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "releaseDate",
+							"value": "2022-05-05",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Very fast cpu",
+							"type": "text"
+						},
+						{
+							"key": "generation",
+							"value": "6",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Maximus I 65J",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"update"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.7.2 update pc not allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Ultimate PC",
+							"type": "text"
+						},
+						{
+							"key": "manufacturerID",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1299.80",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.7.3 update manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Asus CH",
+							"type": "text"
+						},
+						{
+							"key": "origin",
+							"value": "Austria",
+							"type": "text"
+						},
+						{
+							"key": "tel",
+							"value": "0041 43 892 38 29",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.ch",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.8.1 delete component",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/component/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"component",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.8.2 delete pc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/pc/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"pc",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.8.3 delete manufacturer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/manufacturer/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"manufacturer",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.2 Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function(){",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alwaysdrive",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "neverride",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pc-management-1.0/resource/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pc-management-1.0",
+						"resource",
+						"user",
+						"logout"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "hans",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"disabled": true
 						}
 					]
 				}

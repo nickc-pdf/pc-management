@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Nick Camenisch"/>
+    <meta name="project" content="PC-Management"/>
+    <meta name="description" content="pcmanagement pcs list table"/>
+    <title>PC-Liste</title>
+    <link rel="stylesheet" href="./css/pcmanagement.css">
+    <script src="./js/util.js"></script>
+    <script src="./js/pcmanagement.js"></script>
+</head>
+<body>
+<nav id="nav">
+    <span><a href="./pcmanagement.html">PCs</a></span>
+    <span><a href="./manufacturerlist.html">Manufacturers</a></span>
+    <span><a href="./componentlist.html">Components</a></span>
+    <span id="logOnOff"><a href="./index.html">Logout</a></a></span>
+    <span id="message" style="color: red;"></span>
+</nav>
+<h3>PC-Liste</h3>
+<form id="managementForm">
+    <table id="pcmanagement">
+        <thead>
+        <tr id="headings">
+            <th></th>
+        </tr>
+        <tr id="search">
+            <th>&#128269;</th>
+            <th><input id="nameFilter" type=text"/></th>
+            <th><input id="componentFilter" type=text"/></th>
+            <th><input id="manufacturerFilter" type=text"/></th>
+            <th><input id="priceFilter" type=text"/></th>
+        </tr>
+        </thead>
+        <tbody id="pclist">
+
+        </tbody>
+    </table>
+    <p id="addButton">
+    </p>
+</form>
+</body>
+</html>
