@@ -30,10 +30,18 @@ public class Manufacturer {
     private String manufacturer;
     private int id;
 
+    /**
+     * gets manufacturer
+     * @return value of manufacturer
+     */
     public String getManufacturer() {
         return manufacturer;
     }
 
+    /**
+     * sets manufacturer
+     * @param manufacturer the value to set
+     */
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }

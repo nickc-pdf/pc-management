@@ -82,11 +82,19 @@ public class PC {
         this.manufacturer = manufacturer;
     }
 
+    /**
+     * gets manufacturerID
+     * @return  value of manufacturerID
+     */
     public int getManufacturerID() {
         if (getManufacturer()== null) return 0;
         return getManufacturer().getId();
     }
 
+    /**
+     * sets manufacturerID
+     * @param manufacturerID value to set
+     */
     public void setManufacturerID(int manufacturerID) {
         setManufacturer(new Manufacturer());
         Manufacturer manufacturer = DataHandler.readManufacturerID(manufacturerID);
